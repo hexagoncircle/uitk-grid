@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>UITK Grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism-okaidia.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/line-numbers/prism-line-numbers.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div class="site-content">
+  <section>
+    <h1>UITK Grid</h1>
+    <p>The UI Toolkit Grid is the underlying structure that aids designers and developers in the construction of web app layouts. Review this documentation and try it out on the <a href="https://codepen.io/hexagoncircle/pen/09a4dc32a72ca01dff52f3874d2e9285" target="_blank">UITK Grid Playground</a>.</p>
+    <p>The foundation for setting up a new grid looks like this:</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid>
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <p>You can add as many columns as you want to the grid. Columns will span across a 12-column layout and then wrap onto a new row once they exceed this limit. The following example shows how HTML attributes are used to acheive a flexible grid-based layout.</p>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="5" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2" span-sm="6" push="1" push-reset-sm>
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2" span-sm="6" push="2" push-reset-sm>
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="6" span-xs="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" span-sm="6" span-xs="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" span-sm="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" span-sm="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" span-sm="6" span-xs="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" span-sm="6" span-xs="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Column sizing</h2>
+      <p>Set column sizes using the <code>span</code> attribute. Use <code>span-[size]</code> to set a new column size at a particular breakpoint.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid>
+            <uitk-col span="1" span-md="4" span-sm="6" span-xs="12">
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="1" span-md="4" span-sm="6" span-xs="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-md="4" span-sm="6" span-xs="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2" span-md="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="5" span-md="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Push Columns</h2>
+      <p>Set <code>push-[size]</code> to push a column over grid spaces. Use <code>push-reset-[size]</code> to remove the push attribute at a particular breakpoint.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid>
+            <uitk-col span="6" span-md="8" push="3" push-md="2" push-reset-sm>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="1" push="11">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2" push="10">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3" push="9">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" push="8">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="5" push="7">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6" push="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="7" push="5">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="8" push="4">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="9" push="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="10" push="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="11" push="1">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+    <section>
+    <h2>Grid Gap Sizing</h2>
+    <p>The gap between columns can be resized using the <code>gap</code> attribute. Breakpoint gap sizing is available using <code>gap-[size]</code>. Available size values are <code>[loosen, default, tighten, none]</code>.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid gap-md="tighten">
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap="loosen">
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+      
+    <uitk-grid>
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+
+    <uitk-grid gap="tighten">
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+      
+    <uitk-grid gap="none">
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Nested Grids</h2>
+    <p>Simply add a new grid inside of a column to nest a grid inside a grid.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid>
+            <uitk-col>
+              <uitk-grid>
+                <uitk-col>
+                  <!-- Content -->
+                </uitk-col>
+              </uitk-grid>
+            </uitk-col>
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="8" span-sm="12">
+        <div class="demo-content demo-content-padded">
+          <uitk-grid attach-grid>
+            <uitk-col span="3" span-md="4" span-sm="12">
+              <div class="demo-content"></div>
+            </uitk-col>
+            <uitk-col span="9" span-md="8" span-sm="12">
+              <div class="demo-content demo-content-padded">
+                <uitk-grid>
+                  <uitk-col span="6" span-sm="12">
+                    <div class="demo-content"></div>
+                  </uitk-col>
+                  <uitk-col span="6" span-sm="12">
+                    <div class="demo-content"></div>
+                  </uitk-col>
+                </uitk-grid>
+              </div>
+            </uitk-col>
+          </uitk-grid>
+          <uitk-grid>
+            <uitk-col span="6" span-sm="12">
+              <div class="demo-content"></div>
+            </uitk-col>
+            <uitk-col span="3" span-sm="6">
+              <div class="demo-content"></div>
+            </uitk-col>
+            <uitk-col span="3" span-sm="6">
+              <div class="demo-content"></div>
+            </uitk-col>
+            <uitk-col span="4" span-sm="12">
+              <div class="demo-content"></div>
+            </uitk-col>
+            <uitk-col span="4" span-sm="12">
+              <div class="demo-content"></div>
+            </uitk-col>
+            <uitk-col span="4" span-sm="12">
+              <div class="demo-content"></div>
+            </uitk-col>
+          </uitk-grid>
+        </div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content demo-content-padded">
+          <uitk-grid>
+            <uitk-col span="8" span-md="12">
+              <div class="demo-content demo-content-padded">
+                <uitk-grid>
+                  <uitk-col span="4">
+                    <div class="demo-content"></div>
+                  </uitk-col>
+                  <uitk-col span="8">
+                    <div class="demo-content"></div>
+                  </uitk-col>
+                </uitk-grid>
+              </div>
+            </uitk-col>
+            <uitk-col span="4" span-md="12">
+              <div class="demo-content"></div>
+            </uitk-col>
+          </uitk-grid>
+        </div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+
+  <section>
+    <h2>Vertical Alignment</h2>
+    <p>Align elements vertically using the <code>align-y</code> attribute. Set it to <code>[flex-start, center, flex-end]</code> to align elements to the top, middle or bottom of their container</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid align-y="center">
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten" align-y="flex-start">
+      <uitk-col span="6">
+        <div class="demo-content demo-content-expand"></div>
+      </uitk-col>
+      <uitk-col span="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+    <uitk-grid gap-md="tighten" align-y="center">
+      <uitk-col span="6">
+        <div class="demo-content demo-content-expand"></div>
+      </uitk-col>
+      <uitk-col span="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+    <uitk-grid gap-md="tighten" align-y="flex-end">
+      <uitk-col span="6">
+        <div class="demo-content demo-content-expand"></div>
+      </uitk-col>
+      <uitk-col span="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Horizontal Alignment</h2>
+    <p>Align elements horizontally using the <code>align-x</code> attribute. Set it to <code>[flex-start, center, flex-end]</code> to align elements to the left, center, or right of their container.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid align-x="center">
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten" align-x="flex-start">
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+    <uitk-grid gap-md="tighten" align-x="center">
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+    <uitk-grid gap-md="tighten" align-x="flex-end">
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Distribution</h2>
+    <p>Distribute elements horizontally using the <code>align-x</code> attribute. Set it to <code>[space-around, space-between]</code> to align elements to assign spacing around or between each column.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid align-x="space-between">
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten" align-x="space-around">
+      <uitk-col span="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+    <uitk-grid gap-md="tighten" align-x="space-between">
+      <uitk-col span="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Attach Grid</h2>
+      <p>A grid can have another grid element attached to it using the <code>attach-grid</code> attribute. This will supress the bottom margin on this particular grid element to create a seamless collection of grids.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid attach-grid>
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+          <uitk-grid>
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten" attach-grid>
+      <uitk-col span="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="4">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+      
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="6">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="9">
+        <div class="demo-content"></div>
+      </uitk-col>
+      <uitk-col span="3">
+        <div class="demo-content"></div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Reordering</h2>
+    <p>Reorder elements using the <code>order</code> attribute.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid>
+            <uitk-col order="3">
+              <!-- 1st element -->
+            </uitk-col>
+            <uitk-col order="1">
+              <!-- 2nd element -->
+            </uitk-col>
+            <uitk-col order="2">
+              <!-- 3rd element -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="4" order="2">
+        <div class="demo-content">1</div>
+      </uitk-col>
+      <uitk-col span="4" order="1">
+        <div class="demo-content">2</div>
+      </uitk-col>
+      <uitk-col span="4" order="6">
+        <div class="demo-content">3</div>
+      </uitk-col>
+      <uitk-col span="4" order="3">
+        <div class="demo-content">4</div>
+      </uitk-col>
+      <uitk-col span="4" order="4">
+        <div class="demo-content">5</div>
+      </uitk-col>
+      <uitk-col span="4" order="5">
+        <div class="demo-content">6</div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+
+  <section>
+    <h2>Reverse</h2>
+    <p>Reverse elements by setting the <code>reverse</code> attribute on the grid.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid reverse>
+            <uitk-col>
+              <!-- Content -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten" reverse>
+      <uitk-col span="2">
+        <div class="demo-content">1</div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content">2</div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content">3</div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content">4</div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content">5</div>
+      </uitk-col>
+      <uitk-col span="2">
+        <div class="demo-content">6</div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+  
+  <section>
+    <h2>Page Layout</h2>
+    <p>An example of a page layout.</p>
+    <pre>
+      <code class="language-html">
+        <script type="prism-html-markup">
+          <uitk-grid>
+            <uitk-col span="12">
+              <!-- Header -->
+            </uitk-col>
+            <uitk-col span="8" span-sm="12">
+              <!-- Content -->
+            </uitk-col>
+            <uitk-col span="4" span-sm="12">
+              <!-- Sidebar -->
+            </uitk-col>
+            <uitk-col span="12">
+              <!-- Footer -->
+            </uitk-col>
+          </uitk-grid>
+        </script>
+      </code>
+    </pre>
+    <uitk-grid gap-md="tighten">
+      <uitk-col span="12">
+        <div class="demo-content">Header</div>
+      </uitk-col>
+      <uitk-col span="8" span-sm="12">
+        <div class="demo-content demo-content-expand">Content</div>
+      </uitk-col>
+      <uitk-col span="4" span-sm="12">
+        <div class="demo-content demo-content-expand">Sidebar</div>
+      </uitk-col>
+      <uitk-col span="12">
+        <div class="demo-content">Footer</div>
+      </uitk-col>
+    </uitk-grid>
+  </section>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js'></script>
+
+  
+
+</body>
+
+</html>
