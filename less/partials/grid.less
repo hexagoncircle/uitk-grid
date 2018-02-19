@@ -1,108 +1,105 @@
+// ===================================================
+// Grid System
+// ===================================================
 @gridGapSize: 12px;
 @gridGapTightenSize: @gridGapSize / 1.5;
 @gridGapLoosenSize: @gridGapSize * 1.5;
 @gridMarginLarge: 24px;
 @gridMarginSmall: 6px;
+
 @cols: 12;
-@bp: -lg @bpLg,
--md @bpMd,
--sm @bpSm,
--xs @bpXs;
-@gaps: loosen @gridGapLoosenSize,
-default @gridGapSize,
-tighten @gridGapTightenSize,
-none 0;
-@alignX: flex-start,
-center,
-flex-end,
-space-around,
-space-between;
-@alignY: flex-start,
-center,
-flex-end;
+@bp: -lg @bpLg, -md @bpMd, -sm @bpSm, -xs @bpXs;
+@gaps: loosen @gridGapLoosenSize, default @gridGapSize,
+  tighten @gridGapTightenSize, none 0;
+@alignX: flex-start, center, flex-end, space-around, space-between;
+@alignY: flex-start, center, flex-end;
+
 uitk-grid {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -@gridGapSize 0 @baseMargin -@gridGapSize;
-    & &:last-child {
-        margin-bottom: 0;
-    }
-    &[attach-grid] {
-        margin-bottom: @gridGapSize;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  margin: -@gridGapSize 0 @baseMargin -@gridGapSize;
+
+  & &:last-child {
+    margin-bottom: 0;
+  }
+
+  &[attach-grid] {
+    margin-bottom: @gridGapSize;
+  }
 }
 
 uitk-col {
-    &[span] {
-        position: relative;
-        padding: @gridGapSize 0 0 @gridGapSize;
-    }
+  &[span] {
+    position: relative;
+    padding: @gridGapSize 0 0 @gridGapSize;
+  }
 }
 
-.grid-gaps(@vals, @attr, @i: 1) when (@i <=length(@vals)) {
-    @val: extract(extract(@vals, @i), 1);
-    @size: extract(extract(@vals, @i), 2);
-    [@{attr}="@{val}"] {
-        margin: -@size 0 @baseMargin -@size;
-        &[attach-grid] {
-            margin-bottom: @size;
-        }
-        >uitk-col {
-            padding: @size 0 0 @size;
-        }
+.grid-gaps(@vals, @attr, @i: 1) when (@i <= length(@vals)) {
+  @val:  extract(extract(@vals, @i), 1);
+  @size: extract(extract(@vals, @i), 2);
+
+  [@{attr}="@{val}"] {
+    margin: -@size 0 @baseMargin -@size;
+
+    &[attach-grid] {
+      margin-bottom: @size;
     }
+
+    > uitk-col {
+      padding: @size 0 0 @size;
+    }
+  }
 }
 
-.grid-alignments(@vals, @attr, @i: 1) when (@i <=length(@vals)) {
-    @val: extract(@vals, @i);
-    [@{attr}="@{val}"] {
-        & when (@vals =@alignX) {
-            justify-content: @val;
-        }
-        & when (@vals =@alignY) {
-            align-items: @val;
-        }
+.grid-alignments(@vals, @attr, @i: 1) when (@i <= length(@vals)) {
+  @val: extract(@vals, @i);
+
+  [@{attr}="@{val}"] {
+    & when (@vals = @alignX) {
+      justify-content: @val;
     }
+    & when (@vals = @alignY) {
+      align-items: @val;
+    }
+  }
 }
 
-.grid-attrs(@n, @bp, @i: 1) when (@i <=@n) {
-    @width: percentage(@i / @n);
-    @span: ~"span@{bp}";
-    @push: ~"push@{bp}";
-    @reset: ~"push-reset@{bp}";
-    @gap: ~"gap@{bp}";
-    @x: ~"align-x@{bp}";
-    @y: ~"align-y@{bp}";
-    @order: ~"order@{bp}";
-    @reverse: ~"reverse@{bp}";
-    [@{span}="@{i}"] {
-        flex-basis: @width;
-        max-width: @width;
-    }
-    [@{push}="@{i}"] {
-        margin-left: @width;
-    }
-    [@{order}="@{i}"] {
-        order: @i;
-    }
-    [@{reset}] {
-        margin-left: 0;
-    }
-    [@{reverse}] {
-        flex-direction: row-reverse;
-    }
-    .grid-alignments(@alignX, @x, @i);
-    .grid-alignments(@alignY, @y, @i);
-    .grid-gaps(@gaps, @gap, @i);
-    .grid-attrs(@n, @bp, (@i + 1));
+.grid-attrs(@n, @bp, @i: 1) when (@i <= @n) {
+  @width: percentage(@i / @n);
+  @span: ~"span@{bp}";
+  @push: ~"push@{bp}";
+  @reset: ~"push-reset@{bp}";
+  @gap: ~"gap@{bp}";
+  @x: ~"align-x@{bp}";
+  @y: ~"align-y@{bp}";
+  @order: ~"order@{bp}";
+  @reverse: ~"reverse@{bp}";
+
+  [@{span}="@{i}"] {
+    flex-basis: @width;
+    max-width: @width;
+  }
+
+  [@{push}="@{i}"]  { margin-left: @width; }
+  [@{order}="@{i}"] { order: @i; }
+  [@{reset}]        { margin-left: 0; }
+  [@{reverse}]      { flex-direction: row-reverse; }
+
+  .grid-alignments(@alignX, @x, @i);
+  .grid-alignments(@alignY, @y, @i);
+  .grid-gaps(@gaps, @gap, @i);
+  .grid-attrs(@n, @bp, (@i + 1));
 }
 
 .grid-attrs(@cols, "");
-.grid-bps(@n: length(@bp), @i: 1) when (@i <=length(@bp)) {
-    @media screen and (max-width: extract(extract(@bp, @i), 2)) {
-        .grid-attrs(@cols, extract(extract(@bp, @i), 1));
-    }
-    .grid-bps(@n, (@i + 1));
+
+.grid-bps(@n: length(@bp), @i: 1) when (@i <= length(@bp)) {
+  @media screen and (max-width: extract(extract(@bp, @i), 2)) {
+    .grid-attrs(@cols, extract(extract(@bp, @i), 1));
+  }
+
+  .grid-bps(@n, (@i + 1));
 }
 
 .grid-bps();

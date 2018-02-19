@@ -1,122 +1,124 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500");
-@baseFont: "Roboto",
-Arial,
-sans-serif;
-@codeFont: Monaco,
-Consolas,
-monospace;
+@baseFont: "Roboto", Arial, sans-serif;
+@codeFont: Monaco, Consolas, monospace;
+
 @bpXs: 450px;
 @bpSm: 600px;
 @bpMd: 770px;
 @bpLg: 900px;
+
 @colorSlateDark: #152835;
 @colorGrayscale1: #f0f1f3;
+
 @baseFontSize: 15px;
 @baseFontColor: @colorSlateDark;
 @baseLineHeight: 1.6;
 @baseMargin: 24px;
 @baseBorderRadius: 3px;
+
+// ===================================================
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: @baseFont;
-    font-size: @baseFontSize;
-    line-height: @baseLineHeight;
-    color: @colorSlateDark;
-    background-color: @colorGrayscale1;
-    -webkit-text-size-adjust: 100%;
-    -webkit-overflow-scrolling: touch;
+  margin: 0;
+  font-family: @baseFont;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
+  color: @colorSlateDark;
+  background-color: @colorGrayscale1;
+  -webkit-text-size-adjust: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 section {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 h1 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
-
 h2 {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
-
 h1,
 h2,
 h3 {
-    font-weight: 400;
+  font-weight: 400;
 }
-
 h1,
 h2,
 h3,
 p {
-    margin-bottom: @baseMargin;
+  margin-bottom: @baseMargin;
 }
 
 strong {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 @tagColor: white;
 @tagColorAlt: #152835;
 @tagBorderColor: #bec6cd;
 @tagTextColor: #152835;
+
 pre[class*="language"] {
-    margin-bottom: @baseMargin;
-    font-size: 0.88em;
+  margin-bottom: @baseMargin;
+  font-size: 0.88em;
 }
 
 code:not([class*="language"]) {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0 0.35rem;
-    font-size: @baseFontSize / 1.3;
-    font-family: @codeFont;
-    color: @tagTextColor;
-    background-color: @tagColor;
-    border: 1px solid @tagBorderColor;
-    border-radius: @baseBorderRadius;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 0.35rem;
+  font-size: @baseFontSize / 1.3;
+  font-family: @codeFont;
+  color: @tagTextColor;
+  background-color: @tagColor;
+  border: 1px solid @tagBorderColor;
+  border-radius: @baseBorderRadius;
 }
 
 @siteContentPadding: @baseMargin;
 @siteContentPaddingLg: @baseMargin * 2;
 @siteContentMargin: 60px;
 @siteContentWidth: 1000px;
+
 .site-content {
-    margin: @siteContentMargin auto;
-    padding-right: @siteContentPadding;
-    padding-left: @siteContentPadding;
-    max-width: @siteContentWidth;
-    @media (min-width: @bpMd) {
-        padding-right: @siteContentPaddingLg;
-        padding-left: @siteContentPaddingLg;
-    }
+  margin: @siteContentMargin auto;
+  padding-right: @siteContentPadding;
+  padding-left: @siteContentPadding;
+  max-width: @siteContentWidth;
+
+  @media (min-width: @bpMd) {
+    padding-right: @siteContentPaddingLg;
+    padding-left: @siteContentPaddingLg;
+  }
 }
 
 // Test demo content
 @colContentColor: #485f71;
-@colContentColorAlt: fade(#bec6cd,
-50%);
+@colContentColorAlt: fade(#bec6cd, 50%);
+
 .demo-content {
-    padding: 16px 0;
-    font-size: 1rem;
-    text-align: center;
-    color: white;
-    background-color: @colContentColor;
-    border-radius: @baseBorderRadius;
-    overflow: hidden;
-    .demo-content {
-        background-color: @colContentColorAlt;
-    }
+  padding: 16px 0;
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  background-color: @colContentColor;
+  border-radius: @baseBorderRadius;
+  overflow: hidden;
+
+  .demo-content {
+    background-color: @colContentColorAlt;
+  }
 }
 
 .demo-content-padded {
-    padding: 16px;
+  padding: 16px;
 }
-
 .demo-content-expand {
-    min-height: 8rem;
+  min-height: 8rem;
 }
